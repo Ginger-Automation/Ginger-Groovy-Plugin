@@ -15,7 +15,14 @@ namespace GingerGroovyPluginConsole
         /// <param name="GroovyHomePath"></param>
         /// <param name="GroovyScriptPath"></param>
         [GingerAction("ExecuteGroovyScriptFile", "Execute Groovy Script File")]
-        public void ExecuteGroovyScriptFile(IGingerAction GA, string OverwriteGroovyHomePath, string GroovyScriptPath, List<GroovyPrameters> GroovyPrameters)
+        public void ExecuteGroovyScriptFile(IGingerAction GA, 
+            string OverwriteGroovyHomePath,
+            [Browse(true)]
+            [BrowseType(BrowseType =BrowseTypeAttribute.eBrowseType.File)]
+            [FileType("groovy")]
+            [Label("Groovy Script Path")]
+            string GroovyScriptPath, 
+            List<GroovyPrameters> GroovyPrameters)
         {
             GroovyExecution groovyExecution = new GroovyExecution();
             groovyExecution.ExecutionMode = GroovyExecution.eExecutionMode.ScriptPath;
